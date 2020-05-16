@@ -6,6 +6,11 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import java.util.List;
+
+// Dao = Data access objects.
+
+// Used to store queries and methods for accessing the database
+
 @Dao
 public interface LocationDao {
 
