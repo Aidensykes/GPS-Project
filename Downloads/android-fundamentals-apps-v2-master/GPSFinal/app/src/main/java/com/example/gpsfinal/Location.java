@@ -9,8 +9,10 @@ import androidx.room.PrimaryKey;
 @Entity
 public class Location {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "LocationID")
     public int locationID;
+
 
     @ColumnInfo(name = "xCoordinate")
     public String xCoordinate;
