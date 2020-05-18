@@ -8,28 +8,42 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         // Save state on startup
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        Button flipActivity = findViewById(R.id.mapButton);
+        flipActivity.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                System.out.println("Button Clicked");
+                Intent activity2Intent = new Intent(getApplicationContext(), MapsActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
+        
+        
+        if (Build.VERSION.SDK_INT >= 23) {
 
-        if(Build.VERSION.SDK_INT >= 23){
-
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // Request Location of GPS tracker
                 // Permissions = To Access user's GPS
 
-                requestPermissions(new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
 
             } else {
-                    // Request permission
+                // Request permission
                 startService();
             }
-                    // Request Location
+            // Request Location
 
         } else {
 
@@ -38,10 +52,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
     }
 
-    void startService(){
+    void startService() {
         Intent intent = new Intent(MainActivity.this, LocationService.class);
         startService(intent);
     }
@@ -49,12 +62,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
+        switch (requestCode) {
             case 1:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     startService();
-                }
-                else{
+                } else {
                     Toast.makeText(this, "Give permissions to start", Toast.LENGTH_LONG).show();
                 }
         }
