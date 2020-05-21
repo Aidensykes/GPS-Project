@@ -1,11 +1,8 @@
 package com.example.gpsfinal;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Dao;
-import androidx.room.Room;
-
 import android.Manifest;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -14,22 +11,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.File;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-      // Prepopulate Database before application starts
-      //  Room.databaseBuilder(appContext, AppDatabase.class, "location.db")
-      //          .createFromFile(new File("com\\example\\gpsfinal"))
-      //          .build();
+        // Prepopulate Database before application starts
+        //  Room.databaseBuilder(appContext, AppDatabase.class, "location.db")
+        //          .createFromFile(new File("com\\example\\gpsfinal"))
+        //          .build();
 
 
         // Save state on startup
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         Button flipActivity = findViewById(R.id.mapButton);
         flipActivity.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -79,5 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 }
         }
     }
+
+
 }
+
 //setContentView(R.layout.activity_main);

@@ -1,16 +1,5 @@
 package com.example.gpsfinal;
 
-import androidx.fragment.app.FragmentActivity;
-
-import android.os.Bundle;
-
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,11 +33,17 @@ public class MapsActivity extends AppCompatActivity
 
     @Override
     public void onMapReady(GoogleMap gpsMap) {
-        // Add a marker in Sydney, Australia,
-        // and move the map's camera to the same location.
-        LatLng sydney = new LatLng(-33.852, 151.211);
-        gpsMap.addMarker(new MarkerOptions().position(sydney)
-                .title("Marker in Sydney"));
-        gpsMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        LatLng home = new LatLng(53.6880146, -1.7967885);
+        gpsMap.addMarker(new MarkerOptions().position(home)
+                .title("Marker at home"));
+        gpsMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+
+
+
     }
+
+
+
+
 }
