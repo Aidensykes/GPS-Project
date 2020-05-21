@@ -11,15 +11,15 @@ import androidx.room.PrimaryKey;
 public class Location {
 
     @PrimaryKey(autoGenerate = true)
-    private int locationID;
+    public int locationID;
 
     @ColumnInfo(name = "xCoordinate")
-    private Double xCoordinate;
+    public String xCoordinate;
 
     @ColumnInfo(name = "yCoordinate")
-    private Double yCoordinate;
+    public String yCoordinate;
 
-    public Location(int locationID, Double xCoordinate, Double yCoordinate){
+    public Location(int locationID, String xCoordinate, String yCoordinate){
 
         this.locationID = locationID;
         this.xCoordinate = xCoordinate;
@@ -28,24 +28,24 @@ public class Location {
     }
 
     @Ignore
-    public Location(Double xCoordinate, Double yCoordinate){
+    public Location(String xCoordinate, String yCoordinate){
 
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
 
     }
 
-    
+
 public int getLocationID() {return locationID;}
 
 public void setLocationID(int locationID) {this.locationID = locationID;}
 
-public double getx() {return xCoordinate;}
+public String getx() {return xCoordinate;}
 
-public void setx(double xCoordinate) {this.xCoordinate = xCoordinate;}
+public void setx(String xCoordinate) {this.xCoordinate = xCoordinate;}
 
-public double gety() {return yCoordinate;}
+public String gety() {return yCoordinate;}
 
-public void sety(double yCoordinate) {this.yCoordinate = yCoordinate;}
+public void sety(String yCoordinate) {this.yCoordinate = yCoordinate;}
 
 }
