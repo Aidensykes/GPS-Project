@@ -41,7 +41,17 @@ public class LocationService extends Service {
                 Intent intent = new Intent("ACT_LOC");
                 intent.putExtra("latitude", locationResult.getLastLocation().getLatitude());
                 intent.putExtra("longitude", locationResult.getLastLocation().getLongitude());
+
+                // Send location data to Android Room Database (Latitude + Longitude and such)
+                LocationDatabase location_db = LocationDatabase.getInstance(this);
+
+                Location location =
+                        new Location(locationResult.getLastLocation().getLatitude(),locationResult.getLastLocation().getLongitude());
+
                 sendBroadcast(intent);
+
+
+
             }
         };
     }

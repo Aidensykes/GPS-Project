@@ -2,6 +2,8 @@ package com.example.gpsfinal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Dao;
+import androidx.room.Room;
 
 import android.Manifest;
 import android.content.Intent;
@@ -12,10 +14,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+      // Prepopulate Database before application starts
+      //  Room.databaseBuilder(appContext, AppDatabase.class, "location.db")
+      //          .createFromFile(new File("com\\example\\gpsfinal"))
+      //          .build();
+
 
         // Save state on startup
         super.onCreate(savedInstanceState);
@@ -29,8 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(activity2Intent);
             }
         });
-        
-        
+
         if (Build.VERSION.SDK_INT >= 23) {
 
             if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
