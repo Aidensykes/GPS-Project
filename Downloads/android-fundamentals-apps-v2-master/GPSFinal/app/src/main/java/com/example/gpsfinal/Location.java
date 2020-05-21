@@ -35,6 +35,17 @@ public class Location {
 
     }
 
+    
+public int getLocationID() {return locationID;}
 
+public void setLocationID(int locationID) {this.locationID = locationID;}
+
+public double getx() {return xCoordinate;}
+
+public void setx(double xCoordinate) {this.xCoordinate = xCoordinate;}
+
+public double gety() {return yCoordinate;}
+
+public void sety(double yCoordinate) {this.yCoordinate = yCoordinate;}
 
 }
