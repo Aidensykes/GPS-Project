@@ -4,10 +4,12 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -38,18 +40,23 @@ public class MapsActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap gpsMap) {
 
-     //   LatLng home = new LatLng(53.6880146, -1.7967885);
-     //   gpsMap.addMarker(new MarkerOptions().position(home)
-     //           .title("Marker at home"));
-     //   gpsMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+      // single point data used for testing
 
-        // Instantiates a new Polyline object and adds points to define a rectangle
+       LatLng home = new LatLng(53.6880146, -1.7967885);
+       gpsMap.addMarker(new MarkerOptions().position(home)
+                .title("Marker at home"));
+       gpsMap.moveCamera(CameraUpdateFactory.newLatLng(home));
+
+        // Instantiates a new Polyline object
         PolylineOptions homeRoute = new PolylineOptions()
-                .add(new LatLng(53.6880146, -1.7967885))
-                .add(new LatLng(53.6937457, -1.7890395))  // North of the previous point, but at the same longitude
-                .add(new LatLng(53.6945143, -1.7920865))  // Same latitude, and 30km to the west
-                .add(new LatLng(53.6923227, -1.795391))  // Same longitude, and 16km to the south
-                .add(new LatLng(53.6894861, -1.7969306)); // Closes the polyline.
+                .add(new LatLng(53.6880146, -1.7967885)) // Starts the polyline
+                .add(new LatLng(53.6937457, -1.7890395))
+                .add(new LatLng(53.6945143, -1.7920865))
+                .add(new LatLng(53.6923227, -1.795391))
+                .add(new LatLng(53.6894861, -1.7969306))
+                .geodesic(true);
+// Closes the polyline.
+
 
 // Get back the mutable Polyline
         Polyline polyline = gpsMap.addPolyline(homeRoute);
