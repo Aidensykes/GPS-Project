@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/Markmis1/LaHBot#readme",
   "dependencies": {
-    "npm": "^6.14.8"
+    "npm": "^11.7.0"
   }
 }
